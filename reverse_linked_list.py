@@ -23,7 +23,7 @@ class LinkedList:
             print(cur.data)  
             cur = cur.next
     # this is why I wanted to make this small script 
-    def reverse(self):
+    def reverse_stack_method(self):
         stack = []
         cur = self.head 
         while (cur.next):
@@ -37,6 +37,17 @@ class LinkedList:
             cur = previous
         # set tail's next to null 
         cur.next = None
+    
+    def reverse_in_place(self): # a bit cleaner than the stack method, but can be difficult to visualize
+        cur = self.head
+        prev = None 
+        while cur:
+            self.head = cur
+            next = cur.next
+            cur.next = prev
+            prev = cur
+            cur = next
+     
             
 
 def main():
@@ -50,7 +61,7 @@ def main():
     list.add(55)
     list.print_list()
     print("reversed")
-    list.reverse()
+    list.reverse_in_place()
     list.print_list()
 
 if __name__ == '__main__':
